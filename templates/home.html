@@ -1,28 +1,13 @@
 {% extends "template.html" %}
-
-
-
 {% block content %}
-    {% macro render_field(field) %}
-        {{ field.label }}
-        {{ field(**kwargs)|safe }}
-        {% if field.errors %}
-            <ul class=errors>
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-    {% endmacro %}
-
-
     <div class="wrapper">
-        <form class="form-signin" >
+        <form class="form-signin" onsubmit="return false">
             <h2 class="form-signin-heading" id="p-name">User Login</h2>
             <div class="input">
-                {{ render_field(form.email) }}
-                {{ render_field(form.password) }}
+                <input type="text" class="form-control" id="email" name="username" placeholder="Email Address"
+                       required="" autofocus="">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                       required="">
             </div>
             <button id="sign-out" class="btn btn-lg btn-primary btn-block" style="display: none;">Sign out</button>
 
@@ -30,5 +15,7 @@
 
         </form>
     </div>
+
+<span class="imdbRatingPlugin" data-user="ur73445281" data-title="tt0371746" data-style="p5"><a href="http://www.imdb.com/title/tt0371746/?ref_=plg_rt_1">IMDb </a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');</script>
 
 {% endblock content %}
