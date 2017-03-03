@@ -1,21 +1,39 @@
 import flask
-import flask_login
-
-from sqlalchemy.orm import sessionmaker
+from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 app = flask.Flask(__name__)
 app.debug = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/me-web.db'
+db = SQLAlchemy(app)
 
+
+@app.route('/onetime', methods=['GET'])
+def onetime():
+
+    return ''
 
 @app.route('/', methods=['GET'])
 def login():
-    # Here we use a class of some kind to represent and validate our
-    # client-side form data. For example, WTForms is a library that will
-    # handle this for us, and we use a custom LoginForm to validate.
-
-    return flask.render_template('home.html', url=flask.request.host)
+    return flask.render_template('home.html', url=flask.request.host,
+                                 movies=MovieCarousel.query.order_by(MovieCarousel.dateadded.desc()))
 
 
-app.secret_key = '7\r\xec\xc0b\xad\xf4\xca\xdf\xd1\xc3\xc9\x03\xe7\xfdf\xc3\xbb\xc1\xbd\xa6+\xb2\xba'
+class MovieCarousel(db.Model):
+    # Columns
 
-app.run()
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    title = db.Column(db.String(128))
+
+    imgurl = db.Column(db.String(500))
+
+    dateadded = db.Column(db.DateTime, default=datetime.datetime.now())
+
+    def __init__(self, title, imgurl):
+        self.title = title
+        self.imgurl = imgurl
+
+
+if __name__ == "__main__":
+    app.run()
