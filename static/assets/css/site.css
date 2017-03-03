@@ -49,3 +49,16 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
+    .btn-successful {
+        background: #79C143;
+        border: none;
+        border-bottom: 3px solid #73AD38;
+        color: #fff !important;
+    }
+    .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+}
+    .list-group{
+    max-height: 300px;
+    overflow-x:auto;
+}

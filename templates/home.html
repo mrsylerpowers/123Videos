@@ -1,21 +1,102 @@
-{% extends "template.html" %}
+{% extends "navbar.html" %}
 {% block content %}
-    <div class="wrapper">
-        <form class="form-signin" onsubmit="return false">
-            <h2 class="form-signin-heading" id="p-name">User Login</h2>
-            <div class="input">
-                <input type="text" class="form-control" id="email" name="username" placeholder="Email Address"
-                       required="" autofocus="">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                       required="">
+    <div class="mx-auto" style="max-width: 1300px">
+        <div class="row">
+            <div class="col-lg-7 px-0">
+                <div class="caro">
+
+                    <div>
+                        <img data-lazy='/static/assets/img/-text.png'>
+                    </div>
+                    <div>
+                        <img data-lazy='/static/assets/img/-text.png'>
+                    </div>
+                    <div>
+                        <img data-lazy='/static/assets/img/-text.png'>
+                    </div>
+
+
+                </div>
             </div>
-            <button id="sign-out" class="btn btn-lg btn-primary btn-block" style="display: none;">Sign out</button>
+            <div class="col-sm-5 px-0">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" >
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">About</a>
+                    </li>
 
-            <button class="btn btn-lg btn-primary btn-block" id="login-btn" type="submit">Login</button>
+                </ul>
 
-        </form>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home" role="tabpanel" >
+                        <div class="list-group ">
+                            <a href="#"
+                               class="list-group-item list-group-item-action flex-column align-items-start active "
+                               style="border-top-right-radius: 0;
+    border-top-left-radius: 0;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                                    risus
+                                    varius blandit.</p>
+                                <small>Donec id elit non mi porta.</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                                    risus
+                                    varius blandit.</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </a>
+                            <a href="#"
+                               class="list-group-item list-group-item-action flex-column align-items-start rounded-0"
+                               style="border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                                    risus
+                                    varius blandit.</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="profile" role="tabpanel">
+                        <br/>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
     </div>
+    <script>
 
-<span class="imdbRatingPlugin" data-user="ur64023610" data-title="tt0371746" data-style="p4"><a href="?ref_=plg_rt_1">IMDb </a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');</script>
 
+        $(document).ready(function () {
+            $('.caro').slick({
+                lazyLoad: 'ondemand',
+                centerMode: true,
+                speed: 300,
+                arrows: false,
+                slidesToShow: 1,
+                autoplay: true,
+                autoplaySpeed: 2000
+            });
+        });
+    </script>
 {% endblock content %}
