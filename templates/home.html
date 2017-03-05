@@ -6,7 +6,7 @@
                 <div class="caro">
                     {% for movie in movies %}
                     <div>
-                        <img data-lazy='{{ movie.imgurl }}' alt="{{ movie.title }}" style="width: 100%">
+                        <img data-lazy='{{ movie.coverimageurl }}' alt="{{ movie.title }}" style="width: 100%">
                     </div>
                     {% endfor %}
 
@@ -15,7 +15,7 @@
             </div>
             <div class="col-sm-5 px-0">
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs collapse" role="tablist" >
+                <ul class="nav nav-tabs" role="tablist" >
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
                     </li>
@@ -33,20 +33,14 @@
                                class="list-group-item list-group-item-action flex-column align-items-start active "
                                style="border-top-right-radius: 0;
     border-top-left-radius: 0;">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small>3 days ago</small>
-                                </div>
+
                                 <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
                                     risus
                                     varius blandit.</p>
                                 <small>Donec id elit non mi porta.</small>
                             </a>
                             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small class="text-muted">3 days ago</small>
-                                </div>
+
                                 <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
                                     risus
                                     varius blandit.</p>
@@ -56,10 +50,7 @@
                                class="list-group-item list-group-item-action flex-column align-items-start rounded-0"
                                style="border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small class="text-muted">3 days ago</small>
-                                </div>
+
                                 <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
                                     risus
                                     varius blandit.</p>

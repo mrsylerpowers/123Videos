@@ -6,7 +6,7 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="/static/assets/img/play.png" width="30" height="30"
                  class="d-inline-block align-top" alt="">
             Movies By Students
@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">GENRE</a>
@@ -28,11 +28,41 @@
                 </li>
 
             </ul>
+            <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
+		<script>
+			CoinWidgetCom.go({
+				wallet_address: '1KrrmjXs9JstnhCUz9d7gJ1SRS8itpBks5',
+				currency: 'bitcoin',
+				counter: 'count',
+				lbl_button: 'Donate',
+				lbl_count: 'donations',
+				lbl_amount: 'BTC',
+				lbl_address: 'Use address below to donate. To help keep this site with no adds',
+				qrcode: true,
+				alignment: 'bl',
+				decimals: 8,
+				size: "big",
+				color: "dark",
+				countdownFrom: "0",
+				element: "#coinwidget-bitcoin-1KrrmjXs9JstnhCUz9d7gJ1SRS8itpBks5",
+				onShow: function(){},
+				onHide: function(){}
+			});
+		</script>
+
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <button class="btn-default btn navbar-link mr-sm-2 btn-successful">Submit Video</button>
+                    <div id="coinwidget-bitcoin-1KrrmjXs9JstnhCUz9d7gJ1SRS8itpBks5" class="mr-sm-2"></div>
+                </li>
+                <li class="nav-item">
+                    <a href="/submit">
+                        <button class="btn-default btn navbar-link mr-sm-2 btn-successful">
+                            Submit Video
+                        </button>
+                    </a>
                 </li>
             </ul>
+
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-successful my-2 my-sm-0" type="submit">Search</button>
