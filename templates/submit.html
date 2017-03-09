@@ -1,46 +1,71 @@
 {% extends "navbar.html" %}
 {% block content %}
-    <div class="form-group">
-        <label for="title">Video Name</label>
-        <input type="url" class="form-control" id="title" placeholder="Video Title">
-    </div>
-    <div class="form-group">
-        <label for="videourl">Video Url</label>
-        <input type="url" class="form-control" id="videourl" placeholder="Enter Video URL" aria-describedby="urlhelp"/>
-        <small id="urlhelp" class="form-text text-muted">Must be video source (e.g.)(.mp4, .m4a)</small>
-    </div>
-    <div class="form-group">
-        <label for="viddescryption">Video Description</label>
-        <textarea class="form-control" id="viddescryption" rows="3" placeholder="Enter Short Video Decryption"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="imdburl">Video IMDB Url</label>
-        <input type="url" class="form-control" id="imdburl" placeholder="Enter IMDB URL" aria-describedby="IMDBhelp"/>
-        <small id="IMDBhelp" class="form-text text-muted">(e.g.)( www.imdb.com/title/tt0371746/)</small>
-    </div>
-    <div class="form-group">
-        <label for="coverinput">Video Cover Image</label>
-        <input type="file" class="form-control-file" id="coverinput" aria-describedby="coverinputfileHelp"/>
-        <small id="coverinputfileHelp" class="form-text text-muted"> aspect ratio 16:9 or 1080p image (e.g.)(.jpe. or png)
-        </small>
-    </div>
-    <div class="form-group">
-        <label for="videoinput">Video Image</label>
-        <input type="file" class="form-control-file" id="videoinput" aria-describedby="videoinputfileHelp"/>
-        <small id="videoinputfileHelp" class="form-text text-muted"> 40" x 60" (e.g.)(.jpe. or png)</small>
-    </div>
-    <div class="form-group ">
-        <label for="videodate">Date</label>
-        <input class="form-control" type="date" id="videodate"/>
-    </div>
-    <div class="form-group">
-        <label for="vidtype">Video Type</label>
-        <select multiple class="form-control" id="vidtype">
-            <option>Movie</option>
-            <option>TV</option>
-            <option>Other</option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    {% if form %}
+        {% if form.errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 
+                </button>
+
+
+                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                <h4 aria-hidden="true" class="alert-heading">Error</h4>
+                {% for foo in form.errors %}
+                    <p>{{ foo }}</p>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+    {% endif %}
+    <form method="POST" role="form" action="/submit">
+        <div class="form-group">
+            <label for="title">Video Name</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Video Title">
+        </div>
+        <div class="form-group">
+            <label for="videourl">Video Url</label>
+            <input type="url" class="form-control" id="videourl" name="videourl" placeholder="Enter Video URL"
+                   aria-describedby="urlhelp"/>
+
+            <small id="urlhelp" class="form-text text-muted">Must be video source (e.g.)(.mp4, .m4a)</small>
+        </div>
+        <div class="form-group">
+            <label for="viddescryption">Video Description</label>
+            <textarea class="form-control" id="viddescryption" name="videodecryption" rows="3"
+                      placeholder="Enter Short Video Decryption"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="imdburl">Video IMDB Url</label>
+            <input type="url" class="form-control" id="imdburl" name="imdburl" placeholder="Enter IMDB URL"
+                   aria-describedby="IMDBhelp"/>
+            <small id="IMDBhelp" class="form-text text-muted">(e.g.)( www.imdb.com/title/tt0371746/)</small>
+        </div>
+        <div class="form-group">
+            <label for="coverinput">Video Cover Image</label>
+            <input type="file" class="form-control-file" name="coverinput" id="coverinput"
+                   aria-describedby="coverinputfileHelp"/>
+            <small id="coverinputfileHelp" class="form-text text-muted"> aspect ratio 16:9 or 1080p image (e.g.)(.jpe.
+                or png)
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="videoinput">Video Image</label>
+            <input type="file" class="form-control-file" name="videoinput" id="videoinput"
+                   aria-describedby="videoinputfileHelp"/>
+            <small id="videoinputfileHelp" class="form-text text-muted"> 40" x 60" (e.g.)(.jpe. or png)</small>
+        </div>
+        <div class="form-group ">
+            <label for="videodate">Date</label>
+            <input class="form-control" type="date" name="date" id="videodate"/>
+        </div>
+        <div class="form-group">
+            <label for="vidtype">Video Type</label>
+            <select name="vidtype" multiple class="form-control" id="vidtype">
+                <option>Movie</option>
+                <option>TV</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 {% endblock content %}

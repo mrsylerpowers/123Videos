@@ -37,6 +37,13 @@
         <link rel="stylesheet" type="text/css" href="/static/assets/slick/slick-theme.css"/>
         <script type="text/javascript" src="/static/assets/slick/slick.min.js"></script>
 
+        <script type="text/javascript">
+        $(function () {
+             $('.flashes>.modal').modal('show');
+        });
+
+        </script>
+
         <!-- Google Anyltics -->
         <script>
             (function (i, s, o, g, r, a, m) {
@@ -60,6 +67,33 @@
     {% endblock head %}
 </head>
 <body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class='flashes'>
+            {% for category, message in messages %}
+                <div class="modal fade hide" id="nope">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{ category }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ message|safe }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
 {% block navbar %}
 {% endblock navbar %}
 <div class="content">
