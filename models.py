@@ -1,6 +1,9 @@
-from me_web import db
+from me_web import app
+from flask_sqlalchemy import SQLAlchemy
+
 import datetime
 
+db = SQLAlchemy(app)
 tags = db.Table('tags',
                 db.Column('movie_id', db.Integer, db.ForeignKey('movie.id')),
                 db.Column('actor_id', db.Integer, db.ForeignKey('actor.id')),
