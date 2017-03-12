@@ -30,6 +30,10 @@
             <small id="urlhelp" class="form-text text-muted">Must be video source (e.g.)(.mp4, .m4a)</small>
         </div>
         <div class="form-group">
+            <label for="authors">Input authors</label>
+            <div id="authors"><div>
+        </div>
+        <div class="form-group">
             <label for="viddescryption">Video Description</label>
             <textarea class="form-control" id="viddescryption" name="videodecryption" rows="3"
                       placeholder="Enter Short Video Decryption"></textarea>
@@ -68,4 +72,13 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script>
+        $(function () {
+
+            $('#authors').magicSuggest({
+                data: '/tags'
+            });
+
+        })();
+    </script>
 {% endblock content %}

@@ -28,7 +28,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
                 integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
                 crossorigin="anonymous"></script>
-
+        <!-- unconfirmed-->
+        <link href="/static/assets/magicsuggest/magicsuggest-min.css" rel="stylesheet">
+        <script src="/static/assets/magicsuggest/magicsuggest-min.js"></script>
         <!-- Caarosell-->
         <script src="/static/assets/js/jquery.lazyload.js"></script>
 
@@ -38,11 +40,12 @@
         <script type="text/javascript" src="/static/assets/slick/slick.min.js"></script>
 
         <script type="text/javascript">
-        $(function () {
-             $('.flashes>.modal').modal('show');
-        });
+            $(function () {
+                $('.flashes>.modal').modal('show');
+            });
 
         </script>
+
 
         <!-- Google Anyltics -->
         <script>
@@ -66,7 +69,7 @@
 
     {% endblock head %}
 </head>
-<body>
+<body ng-app="myApp" ng-controller="MyCtrl">
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         <div class='flashes'>

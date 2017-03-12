@@ -6,6 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_inputs import Inputs
 from wtforms import validators
 from wtforms import ValidationError
+import wtforms
+import json
 
 import requests
 
@@ -48,6 +50,13 @@ class movievalidator(Inputs):
     }
 
 
+@app.route('/tags')
+def authors():
+    query = flask.request.args.get('q')
+    ans = Actor.query.filter(Actor.name.contains(query)).first()
+    return json.dumps(ans)
+
+
 @app.route('/onetime', methods=['GET'])
 def onetime():
     gernes = {Genre('Comedy'), Genre('Crime'), Genre("Drama")}
@@ -76,7 +85,9 @@ def submit():
     inputs = movievalidator(flask.request)
     if flask.request.method == 'POST':
         if inputs.validate():
+
             flask.flash('Submitted', 'Success')
+
         else:
             flask.flash('<br/>'.join(['%s'] * len(inputs.errors)) % tuple(inputs.errors), 'Error')
 
