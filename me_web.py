@@ -1,6 +1,6 @@
 import flask
 
-from models import *
+
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_inputs import Inputs
@@ -18,6 +18,9 @@ app.config['UPLOAD_FOLDER'] = 'ststic/temp/'
 db = SQLAlchemy(app)
 
 app.secret_key = 'yhuhjuibyu'
+
+
+from models import *
 
 
 def validate_url(form, field):
@@ -79,6 +82,9 @@ def onetime():
 
     return ''
 
+@app.errorhandler(500)
+def page_not_found(e):
+    return flask.render_template('500.html'), 500
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
