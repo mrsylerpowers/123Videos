@@ -76,7 +76,7 @@ a.nav-link {
 }
 
 @media (max-width: 991px) {
-    .tab-content , ul.nav-tabs {
+    .coler{
         display: none;
     }
 }

@@ -20,15 +20,15 @@ class Movie(db.Model):
 
     url = db.Column(db.String(800))
 
-    decription = db.Column(db.String(1000) ,default='')
+    decription = db.Column(db.String(1000), default='')
 
     upvotes = db.Column(db.Integer, default=0)
 
     rateing = db.Column(db.Integer, default=0)
 
-    coverimageurl = db.Column(db.String(500) ,default='')
+    coverimageurl = db.Column(db.String(500), default='')
 
-    imdburl = db.Column(db.String(100),default='')
+    imdburl = db.Column(db.String(100), default='')
 
     datecreated = db.Column(db.Date)
 
@@ -38,7 +38,7 @@ class Movie(db.Model):
                               backref=db.backref('movie', lazy='dynamic'))
 
     genre = db.relationship('Genre', secondary=tags,
-                            backref=db.backref('movie', lazy='dynamic'),uselist=True)
+                            backref=db.backref('movie', lazy='dynamic'), uselist=True)
     actors = db.relationship('Actor', secondary=tags,
                              backref=db.backref('movie', lazy='dynamic'))
     directors = db.relationship('Director', secondary=tags,
@@ -80,8 +80,6 @@ class Country(db.Model):
 
     def __init__(self, name):
         self.name = name
-
-
 
 
 class Blog(db.Model):
