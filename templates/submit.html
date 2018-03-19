@@ -1,13 +1,4 @@
 {% extends "navbar.html" %}
-{% block head %}
-
-
-
-{{ super() }}
-    <!-- unconfirmed-->
-    <link href="/static/assets/magicsuggest/magicsuggest-min.css" rel="stylesheet">
-    <script src="/static/assets/magicsuggest/magicsuggest-min.js"></script>
-{% endblock head %}
 {% block content %}
     {% if form %}
         {% if form.errors %}
@@ -54,7 +45,7 @@
             <input id="genre" name="genre">
 
         </div>
-          <div class="form-group">
+        <div class="form-group">
             <label for="country">Input Country</label>
             <input id="country" name="country">
 
@@ -70,21 +61,8 @@
                    aria-describedby="IMDBhelp"/>
             <small id="IMDBhelp" class="form-text text-muted">(e.g.)( www.imdb.com/title/tt0371746/)</small>
         </div>
-        <div class="form-group">
-            <label for="coverinput">Video Cover Image</label>
-            <input type="file" class="form-control-file" name="coverinput" id="coverinput"
-                   aria-describedby="coverinputfileHelp"/>
-            <small id="coverinputfileHelp" class="form-text text-muted"> aspect ratio 16:9 or 1080p image
-                (e.g.)(.jpe.
-                or png)
-            </small>
-        </div>
-        <div class="form-group">
-            <label for="videoinput">Video Image</label>
-            <input type="file" class="form-control-file" name="videoinput" id="videoinput"
-                   aria-describedby="videoinputfileHelp"/>
-            <small id="videoinputfileHelp" class="form-text text-muted"> 40" x 60" (e.g.)(.jpe. or png)</small>
-        </div>
+
+
         <div class="form-group ">
             <label for="videodate">Date</label>
             <input class="form-control" type="date" name="date" id="videodate"/>
@@ -99,9 +77,54 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <form>
+        <div class="form-group">
+            <label for="coverinput">Video Cover Image</label>
+            <input type="file" class="form-control-file file-upload" name="coverinput" id="coverinput"
+                   aria-describedby="coverinputfileHelp" accept="image/*"/>
+            <small id="coverinputfileHelp" class="form-text text-muted"> aspect ratio 16:9 or 1080p image
+                (e.g.)(.jpe.
+                or png)
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="videoinput">Video Image</label>
+            <input type="file" class="form-control-file file-upload" name="videoinput" id="videoinput"
+                   aria-describedby="videoinputfileHelp"/>
+            <small id="videoinputfileHelp" class="form-text text-muted"> 40" x 60" (e.g.)(.jpe. or png)</small>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default btn-success up-btn">Upload</button>
+        </div>
+    </form>
     <script>
 
         $(function () {
+            var mycars = [];
+            $('.up-btn').on('click', (function (e) {
+                e.preventDefault();
+                $('#fileupload').fileupload('send', {url: "/img/upload",
+                    replaceFileInput: false,
+                    singleFileUploads: false,
+                    autoUpload: false,files: mycars});
+            }));
+            $('#fileupload').bind('change', function (e) {
+                var f;
+                f = e.target.files || [{name: this.value}];
+                mycars.push(f[0]);
+            });
+            $('#fileupload').each(function () {
+                $(this).fileupload({
+                    url: "/img/upload",
+                    replaceFileInput: false,
+                    singleFileUploads: false,
+                    autoUpload: false
+
+
+                });
+            });
+
+
             $('#actor').magicSuggest({
                 data: '/tag/actor'
             });
