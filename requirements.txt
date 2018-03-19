@@ -1,0 +1,9 @@
+Flask==0.12
+Flask_SQLAlchemy==1.0
+Werkzeug==0.11.15
+Flask_WTF==0.9.4
+WTForms==2.1
+requests==2.18.4
+Flask_Inputs==0.2.0
+webapp2==2.5.2
+protobuf==3.5.2.post1
