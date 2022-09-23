@@ -6,4 +6,4 @@ WTForms==2.1
 requests==2.20.0
 Flask_Inputs==0.2.0
 webapp2==2.5.2
-protobuf==3.5.2.post1
+protobuf==3.18.3
